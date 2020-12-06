@@ -28,6 +28,8 @@
           style="width: 260px;"
         >
           Tags populares
+          <br />
+          <TagList />
         </aside>
       </div>
     </div>
@@ -35,12 +37,15 @@
 </template>
 
 <script>
-export default {
-
-}
+  import TagList from './TagList'
+  export default {
+    components: {
+      TagList,
+    }
+  }
 </script>
 
-<style>
+<style scoped>
   .bg-green {
     padding: 2em;
     color: white;
