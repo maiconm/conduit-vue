@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <router-view
+      @loginSubmit="loginSubmitHandler"
+      @registerSubmit="registerSubmitHandler"
+    />
   </div>
 </template>
 
@@ -9,6 +12,14 @@
 import Header from './components/Header'
 
 export default {
+  methods: {
+    loginSubmitHandler(dados) {
+      console.log('login',dados)
+    },
+    registerSubmitHandler(dados) {
+      console.log('cadastro', dados)
+    },
+  },
   name: 'App',
   components: {
     Header
