@@ -1,18 +1,34 @@
 <template>
-  <div>
-    <a href="/">
-      tag1
-    </a>
-    <a href="/">
-      tag2
+  <div v-if="!tags">
+    ⏳ carregando...
+  </div>
+  <div v-else-if="!tags.length">
+    🤷 Não há tags!
+  </div>
+  <div v-else>
+    <a
+      v-for="tag in tags"
+      :key="tag"
+      href="/"
+    >
+      {{ tag }}
     </a>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+  export default {
+    async created() {
+      const response = await fetch('https://conduit.productionready.io/api/tags')
+      const {tags} = await response.json()
+      this.tags = tags
+    },
+    data() {
+      return {
+        tags: undefined
+      }
+    }
+  }
 </script>
 
 <style scoped>
