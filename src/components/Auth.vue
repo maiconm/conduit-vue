@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <h1>{{ register ? 'Cadastro' : 'Login' }}</h1>
+    <h1 class="center">{{ register ? 'Cadastro' : 'Login' }}</h1>
     <div class="auth-container">
       <form @submit.prevent="submitHandler">
         <input
+          class="col"
           v-if="register"
           v-model="username"
           autofocus
@@ -13,6 +14,7 @@
           placeholder="Nome de usuário"
         >
         <input
+          class="col"
           v-model="email"
           :autofocus="!register"
           type="text"
@@ -21,18 +23,21 @@
           placeholder="Email"
         >
         <input
+          class="col"
           v-model="password"
           id="password"
           type="password"
           name="password"
           placeholder="Senha"
         >
-        <button
-
-          type="submit"
-        >
-          Enviar
-        </button>
+        <div class="right">
+          <button
+            class="btn-primary"
+            type="submit"
+          >
+            Enviar
+          </button>
+        </div>
       </form>
     </div>
   </div>
@@ -72,6 +77,22 @@
   }
 </script>
 
-<style>
-
+<style scoped>
+  .auth-container {
+    max-width: 600px;
+    margin-left: inherit;
+    margin-right: inherit;
+  }
+  input {
+    box-sizing: border-box;
+    widows: 100%;
+    height: 3em;
+    margin: .5em 0 0;
+    font-size: 1em;
+  }
+  button {
+    height: 3em;
+    font-size: 1em;
+    margin: .5em 0 0;
+  }
 </style>
