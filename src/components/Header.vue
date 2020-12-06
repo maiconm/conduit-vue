@@ -9,7 +9,7 @@
       </router-link>
       <div class="float-right">
         <router-link
-          to="/"
+          to="/home"
           class="menu"
         >
           Home
@@ -57,5 +57,8 @@
   }
   .float-right {
     float: right;
+  }
+  .menu.active {
+    color: #000000cc;
   }
 </style>
