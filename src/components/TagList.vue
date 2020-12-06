@@ -21,7 +21,9 @@
     async created() {
       const response = await fetch('https://conduit.productionready.io/api/tags')
       const {tags} = await response.json()
-      this.tags = tags
+      this.tags = tags.filter(
+        tag => tag.replace(/[^a-z0-9]/g, '')
+      )
     },
     data() {
       return {
