@@ -2,82 +2,88 @@
   <div class="container">
     <h1 class="center">{{ register ? 'Cadastro' : 'Login' }}</h1>
     <div class="auth-container">
-      <form @submit.prevent="submitHandler">
+      <ValidationObserver
+        v-slot="{ invalid }"
+      >
+        <form @submit.prevent="submitHandler">
 
-        <validation-provider
-          v-if="register"
-          rules="required|max:20"
-          v-slot="{ errors }"
-        >
-          <input
-            :class="errors[0] && 'invalid'"
-            class="col"
-            v-model="username"
-            autofocus
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Nome de usuário"
+          <validation-provider
+            v-if="register"
+            rules="required|max:20"
+            v-slot="{ errors }"
           >
-          <div class="error">
-            {{ errors[0] }}
-          </div>
-        </validation-provider>
+            <input
+              :class="errors[0] && 'invalid'"
+              class="col"
+              v-model="username"
+              autofocus
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Nome de usuário"
+            >
+            <div class="error">
+              {{ errors[0] }}
+            </div>
+          </validation-provider>
 
-        <validation-provider
-          rules="required"
-          v-slot="{ errors }"
-        >
-          <input
-            :class="errors[0] && 'invalid'"
-            class="col"
-            v-model="email"
-            :autofocus="!register"
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
+          <validation-provider
+            rules="required"
+            v-slot="{ errors }"
           >
-          <div class="error">
-            {{ errors[0] }}
-          </div>
-        </validation-provider>
+            <input
+              :class="errors[0] && 'invalid'"
+              class="col"
+              v-model="email"
+              :autofocus="!register"
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Email"
+            >
+            <div class="error">
+              {{ errors[0] }}
+            </div>
+          </validation-provider>
 
-        <validation-provider
-          rules="required|password"
-          v-slot="{ errors }"
-        >
-          <input
-            :class="errors[0] && 'invalid'"
-            class="col"
-            v-model="password"
-            id="password"
-            type="password"
-            name="password"
-            placeholder="Senha"
+          <validation-provider
+            rules="required|password"
+            v-slot="{ errors }"
           >
-          <div class="error">
-            {{ errors[0] }}
+            <input
+              :class="errors[0] && 'invalid'"
+              class="col"
+              v-model="password"
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Senha"
+            >
+            <div class="error">
+              {{ errors[0] }}
+            </div>
+          </validation-provider>
+          <div class="right">
+            <button
+              :disabled="invalid"
+              class="btn-primary"
+              type="submit"
+            >
+              Enviar
+            </button>
           </div>
-        </validation-provider>
-        <div class="right">
-          <button
-            class="btn-primary"
-            type="submit"
-          >
-            Enviar
-          </button>
-        </div>
-      </form>
+        </form>
+      </ValidationObserver>
     </div>
   </div>
 </template>
 
 <script>
-  import { ValidationProvider } from 'vee-validate'
+  import { ValidationObserver, ValidationProvider } from 'vee-validate'
 
   export default {
     components: {
+      ValidationObserver,
       ValidationProvider
     },
     props: {
@@ -135,5 +141,10 @@
     height: 3em;
     font-size: 1em;
     margin: .5em 0 0;
+  }
+  button:disabled {
+    border-color: gray;
+    background-color: lightgray;
+    color: darkgray;
   }
 </style>
