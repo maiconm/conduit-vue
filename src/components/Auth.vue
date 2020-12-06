@@ -4,6 +4,7 @@
     <div class="auth-container">
       <form @submit.prevent="submitHandler">
         <input
+          v-model="email"
           autofocus
           type="text"
           id="mail"
@@ -11,6 +12,7 @@
           placeholder="E-mail"
         >
         <input
+          v-model="password"
           id="password"
           type="password"
           name="password"
@@ -29,9 +31,18 @@
 
 <script>
   export default {
+    data() {
+      return {
+        email: '',
+        password: '',
+      }
+    },
     methods: {
       submitHandler() {
-
+        console.log({
+          email: this.email,
+          password: this.password,
+        })
       }
     }
   }
