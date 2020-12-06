@@ -10,6 +10,7 @@
           v-slot="{ errors }"
         >
           <input
+            :class="errors[0] && 'invalid'"
             class="col"
             v-model="username"
             autofocus
@@ -28,6 +29,7 @@
           v-slot="{ errors }"
         >
           <input
+            :class="errors[0] && 'invalid'"
             class="col"
             v-model="email"
             :autofocus="!register"
@@ -46,6 +48,7 @@
           v-slot="{ errors }"
         >
           <input
+            :class="errors[0] && 'invalid'"
             class="col"
             v-model="password"
             id="password"
@@ -124,6 +127,9 @@
   }
   .error {
     color: red;
+  }
+  input.invalid {
+    border: 1px solid red;
   }
   button {
     height: 3em;
