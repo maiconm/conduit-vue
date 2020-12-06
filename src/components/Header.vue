@@ -38,6 +38,9 @@
 </script>
 
 <style scoped>
+  nav {
+    margin: 10px;
+  }
   #logo {
     font-size: 1.25em;
     color: #66bc66;
@@ -47,8 +50,9 @@
   .menu {
     color: #0000004b;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-left: 1em;
-    font-size: 0.9em;
+    margin-left: .5em;
+    padding: .5em;
+    font-size: .9em;
 
   }
   .float-right {
