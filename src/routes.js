@@ -1,6 +1,7 @@
 import Home from './components/Home'
 import Auth from './components/Auth'
 import ArticleList from './components/ArticleList'
+
 export const routes = [
   {
     path: '/home',
@@ -24,10 +25,16 @@ export const routes = [
   },
   {
     path: '/login',
+    props: {
+      register: false,
+    },
     component: Auth,
   },
   {
     path: '/register',
+    props: {
+      register: true,
+    },
     component: Auth,
   },
   {
